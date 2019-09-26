@@ -15,12 +15,28 @@ public class Main {
 
     public static void main(String[] args) { //Wordt 1 keer doorlope om bij de start van het spel de gegevens van elke speler te weten en hoeveel vakjes er gespeeld moet worden.
         System.out.println("Met hoeveel spelers wil je spelen?"); //Initialiseert met hoeveel spelers er gespeeld wordt
-        aantalSpelers = scan.nextInt();
+        if(scan.hasNextInt()){
+            aantalSpelers = scan.nextInt();
+        }
         scan.nextLine();
+        while(aantalSpelers > 10 || aantalSpelers < 1){
+            System.out.println("Dit aantal spelers is niet mogelijk");
+            System.out.println("Geef een aantal tussen 1 en 10");
+            if (scan.hasNextInt()) {
+                aantalSpelers = scan.nextInt();
+                scan.nextLine();
+            }
+        }
         System.out.println("Hoeveel speelvakken wil je spelen?"); //Initialiseert met hoeveel vakjes er gespeeld wordt
-        spelDuratie = scan.nextInt();
+        if(scan.hasNextInt()){
+            spelDuratie = scan.nextInt();
+        }
         scan.nextLine();
-
+        while(spelDuratie < 20){
+            System.out.println("Geef een getal op boven de 20:");
+            spelDuratie = scan.nextInt();
+            scan.nextLine();
+        }
         for (int i = 0; i < aantalSpelers; i++) { //Slaat voor elke speler de spelernaam op.
             System.out.println("Hoe heeft speler " + (i + 1) + "?");
             String spelerNaam = scan.nextLine(); //variabele waarin de spelernaam wordt opgeslagen van de zojuist ingevoerde speler.
@@ -153,7 +169,7 @@ public class Main {
                 {"Hoeveel is 160-60?", "100"}, {"Hoeveel is 1+2+3+4+5?", "15"}, {"Hoeveel is 87-17?", "70"}, {"Hoeveel is 12+110?", "122"},
                 {"Hoeveel is 8*9?", "72"}, {"Hoeveel is 60/3?", "20"}
         };
-        System.out.println("Beantwoord de volgende vraag in de categorie rekenen:");
+        System.out.println("Beantwoord de volgende vraag in de categorie Rekenen:");
         System.out.println(rekenVragen[vraagGesteld][0]); //geeft de vraag
         String antwoord = scan.nextLine(); //leest het antwoord in
         if (antwoord.equals(rekenVragen[vraagGesteld][1])) {
@@ -206,7 +222,7 @@ public class Main {
                 {"Wat is gezonder? chocola, appel", "appel"},
                 {"is een groene banaan al lekker?", "nee"}
         };
-        System.out.println("Beantwoord de volgende vraag in de categorie levensstijl:");
+        System.out.println("Beantwoord de volgende vraag in de categorie Levensstijl:");
         System.out.println(levensstijlVragen[vraagGesteld][0]); //geeft de vraag
         String antwoord = scan.nextLine(); //leest het antwoord in
         if (antwoord.equals(levensstijlVragen[vraagGesteld][1])) {
@@ -242,7 +258,7 @@ public class Main {
                 {"Welke stad bestaat niet? Groningen, Utrecht, Limburg", "Limburg"}
 
         };
-        System.out.println("Beantwoord de volgende vraag in de categorie geografie:");
+        System.out.println("Beantwoord de volgende vraag in de categorie Geografie:");
         System.out.println(geografieVragen[vraagGesteld][0]); //geeft de vraag
         String antwoord = scan.nextLine(); //leest het antwoord in
         if (antwoord.equals(geografieVragen[vraagGesteld][1])) {
